@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <div className="bg-primary p-4 shadow-md flex items-center justify-between">
       <h1 className="text-white text-2xl font-semibold">Rajput Finance</h1>
-      <div>
+      <div className='flex'>
       <button
           onClick={handleToggle}
           className="bg-secondary hover:bg-secondary-dark text-white px-4 py-2 rounded"

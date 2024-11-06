@@ -44,7 +44,7 @@ const Users = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded p-6">
+      <div className="bg-white rounded p-6 mb-6">
         <h2 className="text-2xl font-semibold text-primary mb-4">Users List</h2>
         <table className="table-auto w-full text-left border-collapse border border-gray-200 shadow-md rounded-lg">
           <thead>

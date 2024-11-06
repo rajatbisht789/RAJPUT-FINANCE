@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      width: {
+        '350px': '350px',
+      },
       fontFamily: {
         sans: ["Inter", "sans-serif"], // This applies to all Tailwind `font-sans` classes
       },

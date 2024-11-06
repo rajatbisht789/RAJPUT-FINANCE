@@ -57,7 +57,7 @@ function App() {
               {/* Main content */}
               <div className={`flex-1 ml-0 transition-all duration-300`}>
                 <Navbar />
-                <div className="mt-6">
+                <div className="mt-0 w-[99%]">
                   {renderPage()}
                 </div>
               </div>
