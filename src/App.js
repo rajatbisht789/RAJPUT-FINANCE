@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate} from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import ActiveLoanPage from "./components/ActiveLoanPage";
 import LoanDetailsPage from "./components/LoanDetailsPage";
@@ -10,6 +10,17 @@ import Users from "./components/Users";
 import Loans from "./components/Loans";
 import Payments from "./components/Payments";
 import Stats from "./components/Stats";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+
+const RedirectIfLoggedIn = ({ children }) => {
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUserData"));
+  if (loggedUser) {
+      // If user is logged in, redirect them based on their role
+      return loggedUser.admin ? <Navigate to="/admin" /> : <Navigate to="/active-loan" />;
+  }
+  return children;
+};
 
 function App() {
   const [activePage, setActivePage] = useState('Users');
@@ -37,15 +48,16 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/active-loan" element={<ActiveLoanPage />} />
-        <Route path="/loan-details" element={<LoanDetailsPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/" element={<RedirectIfLoggedIn><LoginPage /></RedirectIfLoggedIn>} />
+        <Route path="/active-loan" element={<ProtectedRoute requiredRole="user"><ActiveLoanPage /></ProtectedRoute>} />
+        <Route path="/loan-details" element={<ProtectedRoute requiredRole="user"><LoanDetailsPage /></ProtectedRoute>} />
+        <Route path="/payment" element={<ProtectedRoute requiredRole="user"><PaymentPage /></ProtectedRoute>} />
 
         {/* Admin Route - This will contain the sidebar and navbar */}
         <Route 
           path="/admin" 
           element={
+            <ProtectedRoute requiredRole="admin">
             <div className="flex">
               {/* Sidebar */}
               <Sidebar 
@@ -62,6 +74,7 @@ function App() {
                 </div>
               </div>
             </div>
+            </ProtectedRoute>
           } 
         />
       </Routes>

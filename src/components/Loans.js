@@ -55,16 +55,6 @@ const Loans = () => {
           </button>
         </div>
       </div>
-      <style>
-        {`
-          /* Media query for mobile devices */
-          @media (max-width: 640px) {
-            .mobile-width {
-              width: 350px;
-            }
-          }
-        `}
-      </style>
     <div className="w-full bg-white rounded p-6 mb-6 mobile-width">
       <h2 className="text-2xl font-semibold text-primary mb-4">Loans List</h2>
       <div className="overflow-auto">
