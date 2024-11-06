@@ -62,7 +62,7 @@ function PaymentPage() {
               <p className="text-lg text-secondary mb-2">Scan QR Code to Pay</p>
               <div className="border p-4 rounded bg-gray-100 inline-block">
                 {/* Placeholder for QR code - replace with actual QR code */}
-                <img src="path_to_qr_code.png" alt="QR Code" className="w-32 h-32" />
+                <img src="/Image/QR.jpg" alt="QR Code" className="w-40 h-40" />
               </div>
 
               {/* Input field for UPI Reference Number */}
